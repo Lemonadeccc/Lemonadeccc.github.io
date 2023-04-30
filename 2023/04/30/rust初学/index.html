@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Lemonadeccc"><title>rust初学 · Lemonadeccc</title><meta name="description" content="安装参照rust中文文档、rust官网、及视频10分钟内完成：Rust的安装与配置。推荐进行国内源的换置。
+学习数据类型compiler一般能推断出类型。但是由于某些方法调用返回类型不能具体，所以就必须添加类型的标注，否则会编译出错。
+标量类型
+一个标量类型代表一个单个的值
+rust有四个主要的标量"><meta name="keywords" content="Blog,博客,Hexo,Lemonadeccc"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.webp"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">Home</a></li><li> <a href="/archives">Archives</a></li><li> <a href="/tags">Tags</a></li><li> <a href="/about">About</a></li><li> <a href="/links">Links</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li></div><div class="avatar"><img src="/images/logo.webp"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/logo@2x.webp" style="width:220px;" alt="favicon"><h3 title=""><a href="/">Lemonadeccc</a></h3><div class="description"><p>A simple blog</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/Lemonadeccc"><i class="fa fa-github"></i></a></li><li><a href="mailto:zwjhb12@163.com"><i class="fa fa-envelope"></i></a></li><li><a target="_blank" rel="noopener" href="http://sighttp.qq.com/authd?IDKEY=627636361"><i class="fa fa-qq"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span>  </span><i class="fa fa-star"></i><span> Lemonadeccc</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><span>Anatolo </span></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>rust初学</a></h3></div><div class="post-content"><p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>参照<a target="_blank" rel="noopener" href="https://rustwiki.org/docs/">rust中文文档</a>、<a target="_blank" rel="noopener" href="https://www.rust-lang.org/zh-CN/">rust官网</a>、及视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1i54y127vu/?spm_id_from=333.337.search-card.all.click">10分钟内完成：Rust的安装与配置</a>。推荐进行国内源的换置。</p>
+<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>compiler一般能推断出类型。但是由于某些方法调用返回类型不能具体，所以就必须添加类型的标注，否则会编译出错。</p>
+<h3 id="标量类型"><a href="#标量类型" class="headerlink" title="标量类型"></a>标量类型</h3><ul>
+<li>一个标量类型代表一个单个的值</li>
+<li>rust有四个主要的标量类型<ul>
+<li>整数类型<ul>
+<li>没有小数部分</li>
+<li>无符号整数u开头，有符号正数i揩油</li>
+<li>rust整数类型列表 i8、u8、i16、u16 、i32（默认类型）、u32、i64、u64、i128、u128、(arch由程序运行的计算机架构所决定): issize、usize<ul>
+<li>有符号范围 -(2 ^ n - 1) ~ 2 ^ (n - 1) -1</li>
+<li>无符号范围 0 ~ 2 ^ n - 1</li>
+<li>isize、usize主要场景是对某种集合进行索引操作</li>
+</ul>
+</li>
+<li>整数字面值<ul>
+<li>Decimal(十进制)、Hex(十六进制)、Octal(八进制)、Binary(二进制)、Btye(u8 only)</li>
+</ul>
+</li>
+<li>整数溢出<ul>
+<li>u8范围0 ~ 255。<ul>
+<li>调试模式下是变异：rust会检查整数溢出，如果溢出程序运行是就会panic</li>
+<li>发布模式下(–realease)编译：rust不会检查可能导致panic的整数溢出<ul>
+<li>如果发生溢出：rust会执行“环绕操作”</li>
+<li>但是程序不会panic</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浮点类型<ul>
+<li>f32</li>
+<li>f64 默认类型</li>
+</ul>
+</li>
+<li>布尔类型<ul>
+<li>true &#x2F; false 一个字节大小</li>
+</ul>
+</li>
+<li>字符类型<ul>
+<li>char 用来描述语言中最基础的单个字符</li>
+<li>使用单引号</li>
+<li>占用4字节大小</li>
+<li>unicode标量值，可以表示比ASCII多得多的字符内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h3><h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><ul>
+<li>可以将多个类型的多个值放在一个类型中</li>
+<li>长度固定：一旦声明就无法改变</li>
+</ul>
+<p>创建tuple，小括号里将值用逗号分开。Tuple中的每一个位置都对应一个类型，Tuple中各元素的类型不必相同。 let tup &#x3D; (500,64.4,’ch’);</p>
+<p>获取tuple元素值，可以使用模式匹配来结构一个tuple来获取元素的值	let (x,y,z)  &#x3D; tup;</p>
+<p>访问tuple元素，在tuple变量使用标记法，后面接元素的索引号	println!(“{},{},{},”,tup.0,tup.1,tup.2);</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
+<li>数组也可以将多个值放在一个类型里</li>
+<li>每个元素的类型必须相同</li>
+<li>数组的长度也是固定的</li>
+</ul>
+<p>声明数组，在中括号里，各值用逗号分开</p>
+<p>数组用处：数据存放在stack中而不是heap中，或者想要保证有固定数量的元素，这时使用数组更有好处。</p>
+<p>数组没有vector灵活。vector和数组类似，由标准库提供。vector长度可以改变。</p>
+<p>数组类型：表示方法：[类型;长度]		let a[i32;3] &#x3D; [555,555,555]</p>
+<p>另外一种声明数组方法</p>
+<p>​	如果数组中的每个元素值都相同，那么可以：在中括号中指定初始值，然后;，最后是数组的长度。[初始值;长度]  let a &#x3D; [3;5] 即 let a &#x3D; [3,3,3,3,3]</p>
+<p>访问数组元素，是在stack上分配的单个内存，可以使用索引来访问数组的元素。</p>
+<p>如果访问索引超出了数组的范围。编译会通过(不是绝对)，但是运行会报错。runtime会panic</p>
+</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2023-04-30</span><span class="leancloud_visitors"></span><span>About871words, 2min54secread</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,http://example.com/2023/04/30/rust初学/,Lemonadeccc,rust初学,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2023/04/30/%E5%89%8D%E7%AB%AF%E7%9B%91%E6%8E%A7SDK%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" title="前端监控SDK开发记录">Post Anterior</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2023/04/30/Leetcode%E5%89%91%E6%8C%87offerI/" title="剑指offerI">Próximo post</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"Posts",PAGES:"Pages",CATEGORIES:"Categories",TAGS:"Tags",UNTITLED:"(Untitled)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="Search..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>
